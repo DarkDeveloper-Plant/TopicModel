@@ -15,29 +15,29 @@ public class TopicController {
         this.topicService = topicService;
     }
 
-    @RequestMapping("/topic")
+    @RequestMapping("/topics")
     public List<TopicModel> getTopics() {
         return topicService.getAll();
     }
 
-    @RequestMapping("/topic/{id}")
+    @RequestMapping("/topics/{id}")
     public TopicModel getTopic(@PathVariable String id){
         return topicService.getOne(id);
     }
 
-    @RequestMapping(value = "/topic", method = RequestMethod.POST)
+    @RequestMapping(value = "/topics", method = RequestMethod.POST)
     public List<TopicModel> addTopic(@RequestBody TopicModel newTopic){
         topicService.addOne(newTopic);
         return getTopics();
     }
 
-    @RequestMapping(value = "/topic/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/topics/{id}", method = RequestMethod.DELETE)
     public List<TopicModel> removeTopic(@PathVariable String id){
         topicService.removeOne(id);
         return getTopics();
     }
 
-    @RequestMapping(value = "/topic/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/topics/{id}", method = RequestMethod.PUT)
     public List<TopicModel> updateTopic(@PathVariable String id, @RequestBody TopicModel newTopic){
         topicService.updateTopic(id, newTopic);
         return getTopics();
